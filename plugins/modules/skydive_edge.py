@@ -15,7 +15,8 @@ ANSIBLE_METADATA = {
     "supported_by": "network",
 }
 
-DOCUMENTATION = """module: skydive_edge
+DOCUMENTATION = r'''
+module: skydive_edge
 author:
 - Sumit Jaiswal (@sjaiswal)
 short_description: Module to add edges to Skydive topology
@@ -25,7 +26,7 @@ description:
 requirements:
 - skydive-client
 extends_documentation_fragment:
-- skydive.skydive.skydive
+- community.skydive.skydive
 options:
   parent_node:
     description:
@@ -57,11 +58,11 @@ options:
     choices:
     - present
     - absent
-"""
+'''
 
-EXAMPLES = """
+EXAMPLES = r'''
 - name: create tor
-  skydive_node:
+  community.skydive.skydive_node:
     name: 'TOR'
     node_type: "fabric"
     seed: TOR
@@ -74,7 +75,7 @@ EXAMPLES = """
   register: tor_result
 
 - name: create port 1
-  skydive_node:
+  community.skydive.skydive_node:
     name: 'PORT1'
     node_type: 'fabric'
     seed: PORT1
@@ -85,7 +86,7 @@ EXAMPLES = """
   register: port1_result
 
 - name: create port 2
-  skydive_node:
+  community.skydive.skydive_node:
     name: 'PORT2'
     node_type: 'fabric'
     seed: PORT2
@@ -96,7 +97,7 @@ EXAMPLES = """
   register: port2_result
 
 - name: link node tor and port 1
-  skydive_edge:
+  community.skydive.skydive_edge:
     parent_node: "{{ tor_result.UUID }}"
     child_node: "{{ port1_result.UUID }}"
     relation_type: ownership
@@ -107,7 +108,7 @@ EXAMPLES = """
       password: admin
 
 - name: link node tor and port 2
-  skydive_edge:
+  community.skydive.skydive_edge:
     parent_node: "{{ tor_result.UUID }}"
     child_node: "{{ port2_result.UUID }}"
     relation_type: ownership
@@ -118,7 +119,7 @@ EXAMPLES = """
       password: admin
 
 - name: update link node tor and port 1 relation
-  skydive_edge:
+  community.skydive.skydive_edge:
     parent_node: "{{ tor_result.UUID }}"
     child_node: "{{ port2_result.UUID }}"
     relation_type: layer2
@@ -129,7 +130,7 @@ EXAMPLES = """
       password: admin
 
 - name: Unlink tor and port 2
-  skydive_edge:
+  community.skydive.skydive_edge:
     parent_node: "{{ tor_result.UUID }}"
     child_node: "{{ port2_result.UUID }}"
     relation_type: ownership
@@ -140,7 +141,7 @@ EXAMPLES = """
       password: admin
 
 - name: link tor and port 2 via Gremlin expression
-  skydive_edge:
+  community.skydive.skydive_edge:
     parent_node: G.V().Has('Name', 'TOR')
     child_node: G.V().Has('Name', 'PORT2')
     relation_type: ownership
@@ -151,7 +152,7 @@ EXAMPLES = """
       password: admin
 
 - name: Unlink tor and port 2 via Gremlin expression
-  skydive_edge:
+  community.skydive.skydive_edge:
     parent_node: G.V().Has('Name', 'TOR')
     child_node: G.V().Has('Name', 'PORT2')
     relation_type: ownership
@@ -160,12 +161,12 @@ EXAMPLES = """
       endpoint: localhost:8082
       username: admin
       password: admin
-"""
+'''
 
-RETURN = """ # """
+RETURN = r''' # '''
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible_collections.skydive.skydive.plugins.module_utils.network.skydive.api import (
+from ansible_collections.community.skydive.plugins.module_utils.network.skydive.api import (
     skydive_edge,
 )
 

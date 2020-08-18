@@ -1,10 +1,16 @@
 ---
-authors:
-  - Ansible Network Community (ansible-network)
-dependencies:
-  "ansible.netcommon": "*"
-license_file: LICENSE
+namespace: community
 name: skydive
-namespace: skydive
+version: 1.0.0
 readme: README.md
+authors:
+  - Sumit Jaiswal (@sjaiswal)
+description: Collection allowing to create nodes, edges and captures in Skydive
+tags:
+  - skydive
+  - monitoring
+  - network
+license_file: LICENSE
 repository: https://github.com/ansible-collections/skydive
+homepage: https://github.com/ansible-collections/skydive
+issues: https://github.com/ansible-collections/skydive/issues
