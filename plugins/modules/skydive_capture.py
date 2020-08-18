@@ -15,7 +15,7 @@ ANSIBLE_METADATA = {
     "supported_by": "network",
 }
 
-DOCUMENTATION = r'''
+DOCUMENTATION = r"""
 ---
 module: skydive_capture
 author:
@@ -86,9 +86,9 @@ options:
     choices:
     - present
     - absent
-'''
+"""
 
-EXAMPLES = r'''
+EXAMPLES = r"""
 - name: start a new flow capture directly from gremlin query
   community.skydive.skydive_capture:
     query: G.V().Has('Name', 'eth0', 'Type', 'device')
@@ -136,9 +136,9 @@ EXAMPLES = r'''
       endpoint: localhost:8082
       username: admin
       password: admin
-'''
+"""
 
-RETURN = r''' # '''
+RETURN = r""" # """
 
 from ansible.module_utils.basic import AnsibleModule
 from ansible_collections.community.skydive.plugins.module_utils.network.skydive.api import (

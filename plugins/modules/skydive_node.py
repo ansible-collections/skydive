@@ -15,7 +15,7 @@ ANSIBLE_METADATA = {
     "supported_by": "network",
 }
 
-DOCUMENTATION = r'''
+DOCUMENTATION = r"""
 module: skydive_node
 author:
 - Sumit Jaiswal (@sjaiswal)
@@ -56,9 +56,9 @@ options:
     - present
     - update
     - absent
-'''
+"""
 
-EXAMPLES = r'''
+EXAMPLES = r"""
 - name: create tor node
   community.skydive.skydive_node:
     name: TOR
@@ -97,9 +97,9 @@ EXAMPLES = r'''
       endpoint: localhost:8082
       username: admin
       password: admin
-'''
+"""
 
-RETURN = r''' # '''
+RETURN = r""" # """
 
 from ansible.module_utils.basic import AnsibleModule
 from ansible_collections.community.skydive.plugins.module_utils.network.skydive.api import (

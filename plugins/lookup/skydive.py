@@ -20,7 +20,7 @@ from __future__ import absolute_import, division, print_function
 
 __metaclass__ = type
 
-DOCUMENTATION = r'''
+DOCUMENTATION = r"""
 lookup: skydive
 short_description: Query Skydive objects
 description:
@@ -33,9 +33,9 @@ extends_documentation_fragment:
 options:
   filter:
     description: a dict object that is used to filter the return objects
-'''
+"""
 
-EXAMPLES = r'''
+EXAMPLES = r"""
 - name: return skydive metdata if present based on Name
   set_fact:
     skydive_meta: >-
@@ -46,15 +46,15 @@ EXAMPLES = r'''
     skydive: >-
         {{ lookup('community.skydive.skydive', filter={'query': "G.V().Has('Name')"},
                       provider={'endpoint': 'localhost:8082', 'username': 'admin', 'password': 'password'}) }}
-'''
+"""
 
-RETURN = r'''
+RETURN = r"""
 _list:
   description:
     - The list of queried object metadata
   returned: always
   type: list
-'''
+"""
 
 
 from ansible.plugins.lookup import LookupBase
