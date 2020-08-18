@@ -15,7 +15,9 @@ ANSIBLE_METADATA = {
     "supported_by": "network",
 }
 
-DOCUMENTATION = """module: skydive_capture
+DOCUMENTATION = r"""
+---
+module: skydive_capture
 author:
 - Sumit Jaiswal (@sjaiswal)
 short_description: Module which manages flow capture on interfaces
@@ -30,7 +32,7 @@ description:
 requirements:
 - skydive-client
 extends_documentation_fragment:
-- skydive.skydive.skydive
+- community.skydive.skydive
 options:
   query:
     description:
@@ -86,9 +88,9 @@ options:
     - absent
 """
 
-EXAMPLES = """
+EXAMPLES = r"""
 - name: start a new flow capture directly from gremlin query
-  skydive_capture:
+  community.skydive.skydive_capture:
     query: G.V().Has('Name', 'eth0', 'Type', 'device')
     state: present
     provider:
@@ -97,7 +99,7 @@ EXAMPLES = """
       password: admin
 
 - name: stop the flow capture directly from gremlin query
-  skydive_capture:
+  community.skydive.skydive_capture:
     query: G.V().Has('Name', 'eth0', 'Type', 'device')
     state: absent
     provider:
@@ -106,7 +108,7 @@ EXAMPLES = """
       password: admin
 
 - name: start a new flow capture from user's input
-  skydive_capture:
+  community.skydive.skydive_capture:
     interface_name: Node1
     type: myhost
     capture_name: test_capture
@@ -121,7 +123,7 @@ EXAMPLES = """
       password: admin
 
 - name: stop the flow capture
-  skydive_capture:
+  community.skydive.skydive_capture:
     interface_name: Node1
     type: myhost
     capture_name: test_capture
@@ -136,10 +138,10 @@ EXAMPLES = """
       password: admin
 """
 
-RETURN = """ # """
+RETURN = r""" # """
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible_collections.skydive.skydive.plugins.module_utils.network.skydive.api import (
+from ansible_collections.community.skydive.plugins.module_utils.network.skydive.api import (
     skydive_flow_capture,
 )
 

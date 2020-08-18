@@ -20,7 +20,8 @@ from __future__ import absolute_import, division, print_function
 
 __metaclass__ = type
 
-DOCUMENTATION = """lookup: skydive
+DOCUMENTATION = r"""
+lookup: skydive
 short_description: Query Skydive objects
 description:
 - Uses the Skydive python REST client to return the queried object from Skydive network
@@ -28,7 +29,7 @@ description:
 requirements:
 - skydive-client
 extends_documentation_fragment:
-- skydive.skydive.skydive
+- community.skydive.skydive
 options:
   filter:
     description: a dict object that is used to filter the return objects
@@ -38,16 +39,16 @@ EXAMPLES = r"""
 - name: return skydive metdata if present based on Name
   set_fact:
     skydive_meta: >-
-        {{ lookup('skydive', filter={'query': "G.V().Has('Name', 'sumit-VirtualBox')"}) }}
+        {{ lookup('community.skydive.skydive', filter={'query': "G.V().Has('Name', 'sumit-VirtualBox')"}) }}
 
 - name: return all the skydive metdata having parameter Name
   set_fact:
     skydive: >-
-        {{ lookup('skydive', filter={'query': "G.V().Has('Name')"},
+        {{ lookup('community.skydive.skydive', filter={'query': "G.V().Has('Name')"},
                       provider={'endpoint': 'localhost:8082', 'username': 'admin', 'password': 'password'}) }}
 """
 
-RETURN = """
+RETURN = r"""
 _list:
   description:
     - The list of queried object metadata
@@ -57,7 +58,7 @@ _list:
 
 
 from ansible.plugins.lookup import LookupBase
-from ansible_collections.skydive.skydive.plugins.module_utils.network.skydive.api import (
+from ansible_collections.community.skydive.plugins.module_utils.network.skydive.api import (
     skydive_lookup,
 )
 from ansible.module_utils._text import to_text

@@ -15,7 +15,8 @@ ANSIBLE_METADATA = {
     "supported_by": "network",
 }
 
-DOCUMENTATION = """module: skydive_node
+DOCUMENTATION = r"""
+module: skydive_node
 author:
 - Sumit Jaiswal (@sjaiswal)
 short_description: Module which add nodes to Skydive topology
@@ -24,7 +25,7 @@ description:
 requirements:
 - skydive-client
 extends_documentation_fragment:
-- skydive.skydive.skydive
+- community.skydive.skydive
 options:
   name:
     description:
@@ -57,9 +58,9 @@ options:
     - absent
 """
 
-EXAMPLES = """
+EXAMPLES = r"""
 - name: create tor node
-  skydive_node:
+  community.skydive.skydive_node:
     name: TOR
     node_type: fabric
     seed: TOR1
@@ -72,7 +73,7 @@ EXAMPLES = """
       password: admin
 
 - name: update tor node
-  skydive_node:
+  community.skydive.skydive_node:
     name: TOR
     node_type: host
     seed: TOR1
@@ -85,7 +86,7 @@ EXAMPLES = """
       password: admin
 
 - name: Delete the tor node
-  skydive_node:
+  community.skydive.skydive_node:
     name: TOR
     node_type: host
     seed: TOR1
@@ -98,10 +99,10 @@ EXAMPLES = """
       password: admin
 """
 
-RETURN = """ # """
+RETURN = r""" # """
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible_collections.skydive.skydive.plugins.module_utils.network.skydive.api import (
+from ansible_collections.community.skydive.plugins.module_utils.network.skydive.api import (
     skydive_node,
 )
 
